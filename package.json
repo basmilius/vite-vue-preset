@@ -1,6 +1,6 @@
 {
     "name": "@basmilius/vite-vue-preset",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "My personal presets for use in Vite + Vue projects.",
     "type": "module",
     "license": "MIT",

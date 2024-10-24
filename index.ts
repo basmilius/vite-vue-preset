@@ -6,7 +6,7 @@ import className from 'css-class-generator';
 import libAssets from '@laynezh/vite-plugin-lib-assets';
 import libDts from 'vite-plugin-dts';
 
-const presets = (): Plugin => ({
+const presets = (isLibrary: boolean): Plugin => ({
     name: '@basmilius/vite-vue-preset',
 
     config: () => ({
@@ -16,10 +16,10 @@ const presets = (): Plugin => ({
             minify: 'esbuild',
             rollupOptions: {
                 output: {
-                    assetFileNames: '[hash].[ext]',
-                    chunkFileNames: '[hash].js',
-                    entryFileNames: '[hash].js',
-                    compact: true,
+                    assetFileNames: isLibrary ? undefined : '[hash].[ext]',
+                    chunkFileNames: isLibrary ? undefined : '[hash].js',
+                    entryFileNames: isLibrary ? undefined : '[hash].js',
+                    compact: !isLibrary,
                     minifyInternalExports: true
                 }
             }
@@ -70,7 +70,7 @@ type Options = {
 
 export default ({isLibrary}: Options = {}) => [
     patchCssModules(),
-    presets(),
+    presets(isLibrary),
     isLibrary && libAssets({
         limit: 0,
         name: '[contenthash:8].[ext]'
