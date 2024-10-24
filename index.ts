@@ -3,6 +3,8 @@ import { resolve } from 'node:path';
 import { patchCssModules } from 'vite-css-modules';
 import type { Plugin } from 'vite';
 import className from 'css-class-generator';
+import libAssets from '@laynezh/vite-plugin-lib-assets';
+import libDts from 'vite-plugin-dts';
 
 const presets = (): Plugin => ({
     name: '@basmilius/vite-vue-preset',
@@ -62,7 +64,18 @@ const presets = (): Plugin => ({
     })
 });
 
-export default () => [
+type Options = {
+    readonly isLibrary?: boolean;
+};
+
+export default ({isLibrary}: Options = {}) => [
     patchCssModules(),
-    presets()
+    presets(),
+    isLibrary && libAssets({
+        limit: 0,
+        name: '[contenthash:8].[ext]'
+    }),
+    isLibrary && libDts({
+        cleanVueFileName: true
+    })
 ] satisfies Plugin[];
