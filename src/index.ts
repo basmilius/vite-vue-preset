@@ -76,6 +76,6 @@ export default ({isLibrary}: Options = {}) => [
         name: '[contenthash:8].[ext]'
     }),
     isLibrary && libDts({
-        cleanVueFileName: true
+        cleanVueFileName: false
     })
 ] satisfies Plugin[];
