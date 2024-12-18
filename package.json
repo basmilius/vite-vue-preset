@@ -1,6 +1,6 @@
 {
     "name": "@basmilius/vite-vue-preset",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "description": "My personal presets for use in Vite + Vue projects.",
     "type": "module",
     "license": "MIT",
@@ -27,6 +27,12 @@
         "access": "public",
         "provenance": true
     },
+    "files": [
+        "dist",
+        "CODEOWNERS",
+        "LICENSE",
+        "README.md"
+    ],
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "typings": "./dist/index.d.ts",
