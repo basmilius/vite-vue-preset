@@ -1,6 +1,6 @@
 {
     "name": "@basmilius/vite-vue-preset",
-    "version": "1.7.0",
+    "version": "1.8.0",
     "description": "My personal presets for use in Vite + Vue projects.",
     "type": "module",
     "license": "MIT",
@@ -21,7 +21,7 @@
         "plugin"
     ],
     "scripts": {
-        "build": "tsc --noEmit && esbuild src/index.ts --bundle --minify --external:* --platform=node --target=esnext --format=esm --outfile=dist/index.js"
+        "build": "tsc && esbuild src/index.ts --bundle --minify --external:* --platform=node --target=esnext --format=esm --outfile=dist/index.js"
     },
     "publishConfig": {
         "access": "public",
