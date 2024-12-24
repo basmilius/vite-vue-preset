@@ -1,6 +1,6 @@
 {
     "name": "@basmilius/vite-vue-preset",
-    "version": "1.10.0",
+    "version": "1.11.0",
     "description": "My personal presets for use in Vite + Vue projects.",
     "type": "module",
     "license": "MIT",
@@ -38,7 +38,7 @@
     "typings": "./dist/index.d.ts",
     "sideEffects": false,
     "dependencies": {
-        "@laynezh/vite-plugin-lib-assets": "^0.5.26",
+        "@laynezh/vite-plugin-lib-assets": "^0.6.1",
         "css-class-generator": "^2.0.0",
         "vite-css-modules": "^1.8.0",
         "vite-plugin-dts": "^4.4.0"
