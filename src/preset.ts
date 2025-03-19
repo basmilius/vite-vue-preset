@@ -14,6 +14,7 @@ type Options = {
         readonly classNames?: 'mangled' | 'camel' | 'kebab';
         readonly generateScopedName?: (name: string, filename: string, css: string) => string;
     };
+    readonly fileNames?: 'hashes' | 'actual';
     readonly isLibrary?: boolean;
 };
 
@@ -49,9 +50,9 @@ const presets = (options: Options): Plugin => {
                 minify: 'esbuild',
                 rollupOptions: {
                     output: {
-                        assetFileNames: options.isLibrary ? undefined : '[hash].[ext]',
-                        chunkFileNames: options.isLibrary ? undefined : '[hash].js',
-                        entryFileNames: options.isLibrary ? undefined : '[hash].js',
+                        assetFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].[ext]',
+                        chunkFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].js',
+                        entryFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].js',
                         compact: !options.isLibrary,
                         minifyInternalExports: true
                     }
