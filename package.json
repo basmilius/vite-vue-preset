@@ -1,7 +1,7 @@
 {
     "name": "@basmilius/vite-vue-preset",
-    "version": "1.21.0",
-    "description": "A commonly used preset for a Vite + Vue setup.",
+    "version": "2.0.0",
+    "description": "Commonly used presets used in Vite + Vue setups.",
     "type": "module",
     "license": "MIT",
     "funding": "https://github.com/sponsors/basmilius",
@@ -21,7 +21,7 @@
         "plugin"
     ],
     "scripts": {
-        "build": "tsc && esbuild src/index.ts --bundle --minify --external:* --platform=node --target=esnext --format=esm --outfile=dist/index.js"
+        "build": "tsc && esbuild src/index.ts --bundle --minify --packages=external --platform=node --target=esnext --format=esm --outfile=dist/index.js"
     },
     "publishConfig": {
         "access": "public",
@@ -49,6 +49,6 @@
         "@types/node": "^22.13.10",
         "esbuild": "^0.25.1",
         "typescript": "^5.8.2",
-        "vite": "^6.2.1"
+        "vite": "^6.2.2"
     }
 }
