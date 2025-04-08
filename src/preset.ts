@@ -20,17 +20,17 @@ type Options = {
 
 const presets = (options: Options): Plugin => {
     function generateScopedName(name: string): string {
+        if (name.startsWith('i__const_')) {
+            name = name.substring(9);
+            name = name.substring(0, name.length - 2);
+        }
+
         if (options.cssModules?.classNames === 'camel') {
             return camelCase(name);
         }
 
         if (options.cssModules?.classNames === 'kebab') {
             return kebabCase(name);
-        }
-
-        if (name.startsWith('i__const_')) {
-            name = name.substring(9);
-            name = name.substring(0, name.length - 2);
         }
 
         if (VISITED_CLASSES.includes(name)) {
