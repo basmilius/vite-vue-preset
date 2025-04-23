@@ -46,15 +46,15 @@ const presets = (options: Options): Plugin => {
         config: () => ({
             build: {
                 assetsInlineLimit: 0,
-                cssMinify: 'esbuild',
-                minify: 'esbuild',
+                cssMinify: 'lightningcss',
+                // minify: 'esbuild',
                 rollupOptions: {
                     output: {
                         assetFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].[ext]',
                         chunkFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].js',
                         entryFileNames: options.fileNames === 'actual' || options.isLibrary ? undefined : '[hash].js',
-                        compact: !options.isLibrary,
-                        minifyInternalExports: true
+                        // compact: !options.isLibrary,
+                        // minifyInternalExports: true
                     }
                 }
             },
@@ -94,8 +94,8 @@ const presets = (options: Options): Plugin => {
     };
 };
 
-export default (options: Options = {}) => [
-    patchCssModules(),
+export default (options: Options = {}): Plugin[] => [
+    patchCssModules() as unknown as Plugin,
     presets(options),
 
     options.isLibrary && libAssets({

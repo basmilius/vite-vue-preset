@@ -1,4 +1,7 @@
+import type { Plugin } from 'vite';
 import composeLibrary from './composeLibrary';
 
-export const flux = composeLibrary('@flux-ui/components', '$flux');
-export const fluxDashboard = composeLibrary('@flux-ui/dashboard', '$fluxDashboard');
+type LibraryPlugin = () => Plugin;
+
+export const flux: LibraryPlugin = composeLibrary('@flux-ui/components', '$flux');
+export const fluxDashboard: LibraryPlugin = composeLibrary('@flux-ui/dashboard', '$fluxDashboard');

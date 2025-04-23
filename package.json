@@ -21,7 +21,7 @@
         "plugin"
     ],
     "scripts": {
-        "build": "tsc && esbuild src/index.ts --bundle --minify --packages=external --platform=node --target=esnext --format=esm --outfile=dist/index.js"
+        "build": "bun --bun build.ts"
     },
     "publishConfig": {
         "access": "public",
@@ -38,17 +38,27 @@
     "types": "./dist/index.d.ts",
     "typings": "./dist/index.d.ts",
     "sideEffects": false,
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./oxc": {
+            "types": "./dist/oxc.d.ts",
+            "default": "./dist/oxc.js"
+        }
+    },
     "dependencies": {
         "@laynezh/vite-plugin-lib-assets": "^1.1.0",
         "change-case": "^5.4.4",
         "css-class-generator": "^2.0.0",
-        "vite-css-modules": "^1.8.4",
+        "lightningcss": "^1.29.3",
+        "oxc-transform": "^0.65.0",
+        "vite-css-modules": "^1.8.5",
         "vite-plugin-dts": "^4.5.3"
     },
     "devDependencies": {
-        "@types/node": "^22.14.0",
-        "esbuild": "^0.25.2",
-        "typescript": "^5.8.3",
-        "vite": "^6.2.5"
+        "@types/bun": "^1.2.10",
+        "vite": "^6.3.2"
     }
 }
